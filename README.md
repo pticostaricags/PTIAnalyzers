@@ -32,8 +32,8 @@ In order to be able to use the package, you need to have the following
             
 ## Analyze a list of photos and generates temp files and byte[] with the modified image including the faces rectangles
 * Requires having credentials for Azure Face API and Computer Vision
-** Check Face API here https://docs.microsoft.com/en-us/azure/cognitive-services/face/overview
-** Check Computer Vision here https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/home
+* Check Face API here https://docs.microsoft.com/en-us/azure/cognitive-services/face/overview
+* Check Computer Vision here https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/home
                
                PhotoAnalyzer photoAnalyzer = new PhotoAnalyzer(new MSFaceApiConfiguration(
                 FACEKEY, FACEENDPOINT),
