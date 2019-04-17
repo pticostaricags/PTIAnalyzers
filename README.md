@@ -12,6 +12,7 @@ In order to be able to use the package, you need to have the following
   
 
 ## Analyze a given text
+* Install the package https://www.nuget.org/packages/PTI.Analyzers/
 * Create a new instance of TextAnalyzer and pass it the configured parameters.
 * If you want to intercept the http responses received, configure the event handler for OnHttpResponseReceivedEventHandler
 * Create a new instance of DataAnalyzer
