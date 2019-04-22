@@ -55,3 +55,52 @@ In order to be able to use the package, you need to have the following
                 var newFileFullPath = $@"C:\Temp\ModifiedPhoto{filenameWithoutPath}";
                 File.WriteAllBytes(newFileFullPath, singlePhoto.ModifiedPhotoBytes);
             }
+
+## Analyze an excel file and retrieve a modified copy including per row sentiment, personality information and sentiment over time chart
+                TextAnalyzer textAnalyzer =
+                new TextAnalyzer(new MSTextAnalyticsConfiguration("REPLACE WITH KEY",
+                          "REPLACE WITH ENDPOINT"),
+                          new IBMWatsonClientConfiguration("REPLACE WITH USERNAME",
+                          "REPLACE WITH PASSWORD"));
+            AnalyzeAndDownloadExcelFileParameters parameters =
+            new AnalyzeAndDownloadExcelFileParameters()
+            {
+                ColumnNameForSentimentResults = "Sentiment",
+                ColumnToAnalyze = "Description",
+                ColumnWithDate = "ItemDate",
+                ColumnWithUniqueId = "UniqueId",
+                WorkSheetName = "Sheet1"
+            };
+            using (var fileStream =
+                File.OpenRead(@"REPLACE WITH LOCATION OF .XLSX FILE"))
+            {
+                using (MemoryStream memStream = new MemoryStream())
+                {
+                    fileStream.CopyTo(memStream);
+                    byte[] fileContents = memStream.ToArray();
+                    DataAnalyzer dataAnalyzer = new DataAnalyzer(textAnalyzer);
+                    var outputFileContents = dataAnalyzer.AnalyzeAndModifyExcelFile(parameters,
+                    fileContents, memStream).Result;
+                    File.WriteAllBytes(@"REPLACE WITH FULL PATH FOR RESULTING .XLSX FILE", outputFileContents);
+                }
+            }
+            
+## Analyze User Tweets
+                LinqToTwitter.SingleUserAuthorizer singleUserAuthorizer =
+                new LinqToTwitter.SingleUserAuthorizer()
+                {
+                    CredentialStore = new LinqToTwitter.SingleUserInMemoryCredentialStore()
+                    {
+                        ConsumerKey = "REPLACE WITH YOUR TWITTER APP CONSUMER KEY",
+                        ConsumerSecret = "REPLACE WITH YOUR TWITTER APP CONSUMER SECRET",
+                        AccessToken = "REPLACE WITH YOUR TWITTER APP ACCESS TOKEN",
+                        AccessTokenSecret = "REPLACE WITH YOUR TWITTER APP ACCESS TOKEN",
+                        ScreenName = "REPLACE WITH YOUR username"
+                    }
+                };
+            TextAnalyzer textAnalyzer =
+                new TextAnalyzer(MSTextAnalyticsConfiguration,
+                          IBMWatsonClientConfiguration);
+            DataAnalyzer dataAnalyzer = new DataAnalyzer(singleUserAuthorizer, textAnalyzer);
+            var result = await dataAnalyzer.AnalyzeUserTweetsAndGenerateExcelFileAsync("REPLACE WITH USER HANDLE TO ANALYZE");
+            File.WriteAllBytes(@"REPLACE WITH THE DESIRED .XLSX FILE FULL PATH", result);
