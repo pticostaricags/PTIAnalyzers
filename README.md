@@ -1,6 +1,10 @@
 # PTIAnalyzers
 This package allows you to get some insights on sentiment and personality based on a given text. Package requires you to have credentials for Azure Text Analytics and IBM Personality Insights
 
+## Non-Developers
+A Windows Tool will be hosted and frequently updated for demo purposes. Currently it only supports analyze a given text and save the generated excel file.
+
+## Developers
 ## Pre- Requirements
 In order to be able to use the package, you need to have the following
 * Azure Text Analytics. 
