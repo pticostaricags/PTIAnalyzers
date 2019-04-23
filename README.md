@@ -3,6 +3,7 @@ This package allows you to get some insights on sentiment and personality based 
 
 ## Non-Developers
 A Windows Tool will be hosted and frequently updated for demo purposes. Currently it only supports analyze a given text and save the generated excel file.
+Download and unzip the file "PTI Analyzer Win Client.zip"
 
 ## Developers
 ## Pre- Requirements
