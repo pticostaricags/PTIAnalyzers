@@ -1,6 +1,9 @@
 # PTIAnalyzers
 This package allows you to get some insights on sentiment and personality based on a given text. Package requires you to have credentials for Azure Text Analytics and IBM Personality Insights
 
+## Usage Research
+Please let us know how you will use this package in order to make it better for you: https://www.surveymonkey.com/r/68TG9G8
+
 ## Non-Developers
 A Windows Tool will be hosted and frequently updated for demo purposes. Currently it only supports analyze a given text and save the generated excel file.
 Download and unzip the file "PTI Analyzer Win Client.zip"
